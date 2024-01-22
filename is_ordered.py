@@ -42,7 +42,7 @@ def is_ordered_block(block_num):
             else:
                 prev = curr_tx.gasPrice
         else:
-            total_fee = min(curr_tx.maxPriorityFeePerGas + curr_tx.baseFeePerGas, curr_tx.maxFeePerGas)
+            total_fee = min(curr_tx.maxPriorityFeePerGas + block.baseFeePerGas, curr_tx.maxFeePerGas)
             if total_fee > prev:
                 return False
             else:
@@ -51,12 +51,13 @@ def is_ordered_block(block_num):
 
     return ordered
 
-print(is_ordered_block(12965000))
+#print(is_ordered_block(12965000))
 
 """
 	This might be useful for testing
-
-if __name__ == "__main__":
+"""
+#if __name__ == "__main__":
+def test_code():
 	latest_block = w3.eth.get_block_number()
 
 	london_hard_fork_block_num = 12965000
@@ -80,4 +81,5 @@ if __name__ == "__main__":
 			print( f"Block {block_num} is ordered" )
 		else:
 			print( f"Block {block_num} is ordered" )
-"""
+
+#test_code()
