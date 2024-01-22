@@ -38,14 +38,14 @@ def is_ordered_block(block_num):
         curr_tx = w3.eth.get_transaction(tx)
         if(curr_tx.type != 2):
             if curr_tx.gasPrice > prev:
-                print("current fee vs prev:", curr_tx.gasPrice, prev)
+                # print("current fee vs prev:", curr_tx.gasPrice, prev)
                 return False
             else:
                 prev = curr_tx.gasPrice
         else:
             total_fee = min(curr_tx.maxPriorityFeePerGas + block.baseFeePerGas, curr_tx.maxFeePerGas)
             if total_fee > prev:
-                print("current fee vs prev:", total_fee, prev)
+                # print("current fee vs prev:", total_fee, prev)
                 return False
             else:
                 prev = total_fee
